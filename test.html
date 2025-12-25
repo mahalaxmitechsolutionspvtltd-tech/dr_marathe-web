@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dr Marathe’s Ayurveda & Panchakarma Multispecialty Clinic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Font-awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root{
+      --primary:#2e7d32;
+      --primary-light:#4caf50;
+      --accent:#ffb300;
+      --text:#333;
+      --bg:#f9f9f9;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif;}
+    body{background:var(--bg);color:var(--text);line-height:1.6;}
+    img{max-width:100%;display:block;}
+    a{text-decoration:none;color:inherit;}
+    .container{width:90%;max-width:1100px;margin:auto;}
+    .btn{background:var(--primary);color:#fff;padding:12px 24px;border-radius:30px;display:inline-block;font-weight:600;transition:.3s;}
+    .btn:hover{background:var(--primary-light);}
+    .section{padding:80px 0;}
+    h2{font-size:2rem;margin-bottom:1rem;color:var(--primary);}
+    h3{font-size:1.3rem;margin-bottom:.5rem;color:var(--primary);}
+    /* ----- HEADER ----- */
+    header{
+      background:#fff;
+      box-shadow:0 2px 6px rgba(0,0,0,.05);
+      position:sticky;
+      top:0;
+      z-index:1000;
+    }
+    nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:15px 0;
+    }
+    .logo{font-weight:700;font-size:1.4rem;color:var(--primary);}
+    #nav-toggle{display:none;}
+    .nav-links{
+      list-style:none;
+      display:flex;
+      gap:25px;
+    }
+    .nav-links a{font-weight:500;transition:.3s;}
+    .nav-links a:hover{color:var(--primary);}
+    .whats-btn{
+      background:var(--accent);
+      color:#fff;
+      padding:8px 18px;
+      border-radius:20px;
+      display:flex;align-items:center;gap:8px;
+    }
+    .whats-btn i{font-size:1.2rem;}
+    /* ----- HERO ----- */
+    .hero{
+      background:url('https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      position:relative;
+      color:#fff;
+      text-align:center;
+      padding:140px 0 100px;
+    }
+    .hero::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,.55);
+    }
+    .hero .container{position:relative;z-index:2;}
+    .hero h1{font-size:2.8rem;margin-bottom:1rem;}
+    .hero p{font-size:1.1rem;margin-bottom:2rem;}
+    /* ----- SERVICES ----- */
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+      margin-top:40px;
+    }
+    .service-card{
+      background:#fff;
+      padding:30px 25px;
+      border-radius:12px;
+      box-shadow:0 4px 12px rgba(0,0,0,.06);
+      text-align:center;
+      transition:.3s;
+    }
+    .service-card:hover{transform:translateY(-6px);}
+    .service-card i{font-size:2.2rem;color:var(--primary);margin-bottom:15px;}
+    /* ----- GALLERY ----- */
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:15px;
+      margin-top:40px;
+    }
+    .gallery-grid img{
+      border-radius:8px;
+      height:200px;
+      object-fit:cover;
+      transition:.3s;
+    }
+    .gallery-grid img:hover{transform:scale(1.03);}
+    /* ----- REVIEWS ----- */
+    .review-card{
+      background:#fff;
+      padding:25px;
+      border-radius:12px;
+      box-shadow:0 4px 12px rgba(0,0,0,.06);
+      max-width:700px;margin:20px auto;
+    }
+    .stars{color:var(--accent);margin-bottom:10px;}
+    /* ----- PLANS ----- */
+    .plans{
+      display:flex;flex-wrap:wrap;gap:30px;justify-content:center;margin-top:40px;
+    }
+    .plan{
+      background:#fff;border:2px solid var(--primary-light);border-radius:12px;
+      padding:30px 25px;text-align:center;flex:1 1 260px;max-width:300px;
+    }
+    .plan h4{font-size:1.5rem;margin-bottom:10px;}
+    .plan .price{font-size:2rem;font-weight:700;color:var(--primary);}
+    .plan ul{list-style:none;margin:20px 0;text-align:left;}
+    .plan ul li{margin:8px 0;}
+    .plan ul li::before{
+      content:'✓';
+      color:var(--primary-light);
+      font-weight:bold;
+      display:inline-block;width:20px;
+    }
+    /* ----- ABOUT ----- */
+    .about-flex{
+      display:flex;align-items:center;gap:50px;flex-wrap:wrap;
+    }
+    .about-flex>div{flex:1 1 300px;}
+    .about-flex img{border-radius:12px;}
+    /* ----- CONTACT ----- */
+    .contact-box{
+      background:#fff;padding:30px;border-radius:12px;
+      box-shadow:0 4px 12px rgba(0,0,0,.06);max-width:700px;margin:auto;
+    }
+    .contact-row{display:flex;align-items:center;gap:15px;margin-bottom:15px;}
+    .contact-row i{color:var(--primary);font-size:1.3rem;width:24px;text-align:center;}
+    /* ----- FOOTER ----- */
+    footer{
+      background:var(--primary);
+      color:#fff;
+      text-align:center;
+      padding:25px 10px;
+      font-size:.9rem;
+    }
+    /* ----- RESPONSIVE ----- */
+    @media(max-width:768px){
+      .nav-links{
+        position:fixed;
+        inset:0 0 0 40%;
+        background:#fff;
+        flex-direction:column;
+        padding:80px 30px;
+        transform:translateX(100%);
+        transition:.3s;
+      }
+      #nav-toggle:checked~.nav-links{transform:translateX(0);}
+      .hamburger{
+        display:block;
+        cursor:pointer;
+        font-size:1.5rem;
+        color:var(--primary);
+      }
+      .hero h1{font-size:2.2rem;}
+    }
+    @media(min-width:769px){
+      .hamburger{display:none;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo">Dr Marathe’s Ayurveda</div>
+      <input type="checkbox" id="nav-toggle">
+      <label for="nav-toggle" class="hamburger"><i class="fas fa-bars"></i></label>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#plans">Plans</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="https://wa.me/919999999999?text=Hi%2C%20I%20would%20like%20to%20book%20an%20appointment" class="whats-btn" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i> Book Now
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="home" class="hero">
+  <div class="container">
+    <h1>🌿 Authentic Ayurveda & Panchakarma in Kharghar</h1>
+    <p>Personalised natural solutions for Skin, Hair, Spine, Joints, Digestion & Women’s health.<br>
+       Expert doctors, classical therapies, yoga & diet guidance under one roof.</p>
+    <a href="#contact" class="btn">Schedule Consultation</a>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section id="services" class="section">
+  <div class="container">
+    <h2>Our Services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <i class="fa-solid fa-hand-holding-medical"></i>
+        <h3>Skin & Hair Problems</h3>
+        <p>Psoriasis, eczema, acne, hair-fall, dandruff & chronic allergies.</p>
+      </div>
+      <div class="service-card">
+        <i class="fa-solid fa-person-walking-arrow-loop-left"></i>
+        <h3>Spine & Joint Care</h3>
+        <p>Slip-disc, sciatica, cervical spondylosis, arthritis, frozen shoulder.</p>
+      </div>
+      <div class="service-card">
+        <i class="fa-solid fa-stomach"></i>
+        <h3>Digestive Disorders</h3>
+        <p>IBS, hyper-acidity, constipation, ulcerative colitis, fatty liver.</p>
+      </div>
+      <div class="service-card">
+        <i class="fa-solid fa-venus"></i>
+        <h3>Women’s Health</h3>
+        <p>PCOD, irregular cycles, leucorrhoea, pre-natal & post-natal care.</p>
+      </div>
+      <div class="service-card">
+        <i class="fa-solid fa-spa"></i>
+        <h3>Authentic Panchakarma</h3>
+        <p>Vaman, Virechan, Basti, Nasya & Raktamokshan in classical style.</p>
+      </div>
+      <div class="service-card">
+        <i class="fa-solid fa-leaf"></i>
+        <h3>Yoga & Lifestyle</h3>
+        <p>Personalised asana-pranayama routines, diet & daily regimens.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section id="gallery" class="section" style="background:#fff;">
+  <div class="container">
+    <h2>Clinic Gallery</h2>
+    <div class="gallery-grid">
+      <img src="https://source.unsplash.com/400x300?ayurveda,spa" alt="Therapy room">
+      <img src="https://source.unsplash.com/400x300?herbs" alt="Herbs">
+      <img src="https://source.unsplash.com/400x300?meditation" alt="Meditation">
+      <img src="https://source.unsplash.com/400x300?massage" alt="Massage">
+      <img src="https://source.unsplash.com/400x300?yoga" alt="Yoga">
+      <img src="https://source.unsplash.com/400x300?potted-plant" alt="Plants">
+    </div>
+  </div>
+</section>
+
+<!-- ================= REVIEWS ================= -->
+<section id="reviews" class="section">
+  <div class="container">
+    <h2>Patient Reviews</h2>
+    <div class="review-card">
+      <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p>“After 14 days of Panchakarma my psoriasis patches disappeared completely. Staff is very polite and hygiene is maintained perfectly.”</p>
+      <strong>- Mrs. Anjali Patil</strong>
+    </div>
+    <div class="review-card">
+      <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p>“I walked in with severe cervical pain. Dr Marathe’s medicines and yoga advice gave me 80 % relief in just 3 weeks.”</p>
+      <strong>- Mr. Rakesh Nair</strong>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MEMBERSHIP PLANS ================= -->
+<section id="plans" class="section" style="background:#fff;">
+  <div class="container">
+    <h2>Membership Plans</h2>
+    <div class="plans">
+      <div class="plan">
+        <h4>Basic</h4>
+        <div class="price">₹2 999</div>
+        <small>per year</small>
+        <ul>
+          <li>2 free consultations</li>
+          <li>10 % discount on medicines</li>
+          <li>Free yoga session monthly</li>
+        </ul>
+        <a href="https://wa.me/919999999999?text=I%20want%20to%20enroll%20Basic%20plan" class="btn">Join Now</a>
+      </div>
+      <div class="plan" style="border-color:var(--accent);transform:scale(1.05);">
+        <h4>Family</h4>
+        <div class="price">₹4 999</div>
+        <small>per year</small>
+        <ul>
+          <li>5 free consultations</li>
+          <li>15 % discount on medicines</li>
+          <li>Free annual basic Panchakarma</li>
+          <li>Diet chart for whole family</li>
+        </ul>
+        <a href="https://wa.me/919999999999?text=I%20want%20to%20enroll%20Family%20plan" class="btn">Join Now</a>
+      </div>
+      <div class="plan">
+        <h4>Senior Citizen</h4>
+        <div class="price">₹1 999</div>
+        <small>per year</small>
+        <ul>
+          <li>4 free consultations</li>
+          <li>20 % discount on medicines</li>
+          <li>Free physiotherapy session</li>
+        </ul>
+        <a href="https://wa.me/919999999999?text=I%20want%20to%20enroll%20Senior%20plan" class="btn">Join Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="section">
+  <div class="container">
+    <h2>About Us</h2>
+    <div class="about-flex">
+      <div>
+        <p>Dr Marathe’s Ayurveda & Panchakarma Multispecialty Clinic is a humble effort to bring classical Kerala-style Panchakarma and authentic Ayurvedic treatment to Navi-Mumbai.</p>
+        <p>Founded in 2012, the clinic has successfully treated more than 8 000 patients with chronic & lifestyle disorders. Our team of experienced Ayurvedacharyas, trained therapists and yoga consultants work together to design a personalised healing journey for every patient.</p>
+        <p>We follow strictly the protocols mentioned in Charak Samhita & Ashtang Hridaya, use only genuine herbs and maintain highest standards of hygiene.</p>
+      </div>
+      <img src="https://source.unsplash.com/500x400?doctor,ayurveda" alt="Dr Marathe">
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="section" style="background:#fff;">
+  <div class="container">
+    <h2>Visit / Contact Us</h2>
+    <div class="contact-box">
+      <div class="contact-row">
+        <i class="fas fa-map-marker-alt"></i>
+        <span><strong>Address:</strong> Shop 12, Plot 34, Sector 20, Kharghar, Navi-Mumbai – 410210</span>
+      </div>
+      <div class="contact-row">
+        <i class="fas fa-phone"></i>
+        <span><strong>Call:</strong> <a href="tel:+919999999999">+91 99999 99999</a></span>
+      </div>
+      <div class="contact-row">
+        <i class="fab fa-whatsapp"></i>
+        <span><strong>WhatsApp:</strong> <a href="https://wa.me/919999999999">+91 99999 99999</a></span>
+      </div>
+      <div class="contact-row">
+        <i class="fas fa-clock"></i>
+        <span><strong>Timing:</strong> Mon-Sat 9 am – 1 pm & 4 pm – 8 pm | Sunday closed</span>
+      </div>
+      <div class="contact-row">
+        <i class="fas fa-envelope"></i>
+        <span><strong>Email:</strong> <a href="mailto:info@drmaratheayurveda.com">info@drmaratheayurveda.com</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  © 2025 Dr Marathe’s Ayurveda & Panchakarma Multispecialty Clinic. All rights reserved.
+</footer>
+
+<!-- Smooth scroll for navigation -->
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+    anchor.addEventListener('click',function(e){
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+    });
+  });
+</script>
+</body>
+</html>
